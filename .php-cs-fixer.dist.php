@@ -1,13 +1,13 @@
-<?php
+<?php 
+$finder = PhpCsFixer\Finder::create()
+  ->in(__DIR__.'/src') 
+  ->name('*.php') 
+  ->exclude('var') 
+  ->exclude('vendor'); 
 
-$finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__)
-    ->exclude('var')
-;
-
-return (new PhpCsFixer\Config())
-    ->setRules([
-        '@Symfony' => true,
-    ])
-    ->setFinder($finder)
-;
+$config = new PhpCsFixer\Config(); 
+return $config->setRules([ 
+    '@Symfony' => true, 
+    'array_syntax' => ['syntax' => 'short'], 
+    ]) 
+    ->setFinder($finder);

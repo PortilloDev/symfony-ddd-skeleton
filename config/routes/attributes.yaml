@@ -1,3 +1,7 @@
 shared_routes:
   resource: '../../src/Shared/Infrastructure/Symfony/Controller/'
   type: attribute
+
+book_routes:
+  resource: '../../src/Book/Infrastructure/Symfony/Controller/'
+  type: attribute

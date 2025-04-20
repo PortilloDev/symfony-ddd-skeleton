@@ -9,7 +9,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class BookRepository extends ServiceEntityRepository implements BookRepositoryInterface
 {
-    public function __construct(private ManagerRegistry $registry) // @phpstan-line-ignore
+    public function __construct(private ManagerRegistry $registry)
     {
         parent::__construct($registry, Book::class);
     }

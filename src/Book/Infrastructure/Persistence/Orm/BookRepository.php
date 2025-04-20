@@ -9,18 +9,14 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 class BookRepository extends ServiceEntityRepository implements BookRepositoryInterface
 {
-    public function __construct(private ManagerRegistry $registry) 
+    public function __construct(private ManagerRegistry $registry) // @phpstan-line-ignore
     {
         parent::__construct($registry, Book::class);
-    }
-    protected static function entityClass(): string
-    {
-        return Book::class;
     }
 
     public function findById(int $id): Book|null
     {
-        if (null === $book = $this->findById    ($id)) {
+        if (null === $book = $this->findById($id)) {
             throw BookNotFoundException::fromEmail($id);
         }
         return $book;
@@ -28,14 +24,19 @@ class BookRepository extends ServiceEntityRepository implements BookRepositoryIn
 
     public function save(Book $book): void
     {
-        $this->save($book);
-        $this->flush();
+        $this->getEntityManager()->persist($book);
+        $this->getEntityManager()->flush();
     }
 
     public function remove(Book $book): void
     {
-        $this->remove($book);
-        $this->flush();
+        $this->getEntityManager()->remove($book);
+        $this->getEntityManager()->flush();
+    }
+
+    public function getAll(): array
+    {
+        return $this->findAll();
     }
 
 }

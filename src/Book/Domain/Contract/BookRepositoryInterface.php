@@ -8,6 +8,8 @@ interface BookRepositoryInterface
 {
     public function findById(int $id): ?Book;
 
+    public function getAll(): array;
+
     public function save(Book $book): void;
 
     public function remove(Book $book): void;

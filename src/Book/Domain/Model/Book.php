@@ -4,23 +4,21 @@ namespace App\Book\Domain\Model;
 
 class Book
 {
-    private int $id;
+    private string $id;
+    
     public function __construct(
+        string $id,
         private string $title,
         private string $author,
         private int $pages,
-    )
-    {}
+    ) {
+        $this->id = $id;
+    }
 
-    /**
-     * @return string
-     */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
-
-
 
     /**
      * @return string
@@ -66,8 +64,4 @@ class Book
     {
         $this->pages = $pages;
     }
-
-
-
-
 }

@@ -7,6 +7,10 @@ use App\Book\Domain\Exception\BookNotFoundException;
 use App\Book\Domain\Contract\BookRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
+
+/**
+ * @extends ServiceEntityRepository<Book>
+ */
 class BookRepository extends ServiceEntityRepository implements BookRepositoryInterface
 {
     public function __construct(private ManagerRegistry $registry)
